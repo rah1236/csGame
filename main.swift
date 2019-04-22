@@ -14,38 +14,62 @@ class Handler : CursesHandlerProtocol {
     }
 }
 
-enum direction {
-    case Up
-    case Down
-    case Left
-    case Right
+enum Direction {
+    case up
+    case down
+    case left
+    case right
 }
          
 
 class Player {
-    var playerPos : Point
-    var direction : direction
+    var position : Point
+    var direction : Direction
     var velocity : [Int]
-    let player = mainWindow.cursor
-    init(playerPos:Point, direction:direction, velocity:[Int]){
-      self.playerPos = playerPos
-      self.direction = direction.Right
-      self.velocity = [0,0]
+    let window : Window
+    
+    init(playerPos:Point, direction:Direction, velocity:[Int], window:Window){
+      self.position = playerPos
+      self.direction = Direction.right
+      self.velocity = [0,0] //x Velocity, y Velocity
+      self.window = window
     }
 
     func setPlayerPos(){
-        player.position = Point(x:playerPos.x + velocity[0], y:playerPos.y + velocity[1])
+        position = Point(x:position.x + velocity[0], y:position.y + velocity[1])
     }
 
-    func changeVelocity(keyPressed:key.keyPressed){
-        
+    func changeVelocity(keyPressed:Key.KeyType){
+
+           self.position = Point(x:position.x, y:position.y + 1)
         switch (keyPressed) {
-        case .arrowDown: playerPos = Point(x:playerPos.x, y:playerPos.y + 1)
-        case .arrowUp: playerPos = Point(x:playerPos.x, y:playerPos.y - 1)
-        case .arrowRight: playerPos = Point(x:playerPos.x + 1, y:playerPos.y)
-        case .arrowLeft: playerPos = Point(x:playerPos.x - 1, y:playerPos.y)
+        case .arrowDown:
+
+            self.position = Point(x:position.x, y:position.y + 1)
+        case .arrowUp:
+            self.position = Point(x:position.x, y:position.y - 1)
+        case .arrowRight:
+            self.position = Point(x:position.x + 1, y:position.y)
+        case .arrowLeft:
+            self.position = Point(x:position.x - 1, y:position.y)
         default: do {}
         }
+        /*
+switch (keyPressed) {
+        case .arrowDown:
+            velocity[1] = -1
+        case .arrowUp:
+            velocity[1] = 1
+        case .arrowRight:
+            velocity[0] = 1
+        case .arrowLeft:
+            velocity[0] = -1
+        default:
+            velocity[0] = 0
+            velocity[1] = 0
+        }
+        */
+        window.refresh()
     }
 }
 
@@ -56,11 +80,26 @@ func main() {
 
     let mainWindow = screen.window    
     let keyboard = Keyboard.shared
-    let player = Player(playerPos:Point(x:0, y:0), direction:direction.Right, velocity:[0,0])
+    let player = Player(playerPos:Point(x:0, y:0), direction:Direction.right, velocity:[0,0], window:mainWindow)
     while (true) {
+        let key = keyboard.getKey(window:mainWindow)
         
         player.setPlayerPos()
-        player.changeVelocity(keyPressed:keyboard.getKey(window:mainWindow).keyType)
+        //      player.changeVelocity(keyPressed:key.keyType)
+  
+        switch (key.keyType) {
+        case .arrowDown:
+            player.position = Point(x:position.x, y:position.y + 1)
+        case .arrowUp:
+            self.position = Point(x:position.x, y:position.y - 1)
+        case .arrowRight:
+            self.position = Point(x:position.x + 1, y:position.y)
+        case .arrowLeft:
+            self.position = Point(x:position.x - 1, y:position.y)
+        default: do {}
+        }
+  
+  
         mainWindow.refresh()
     }
     

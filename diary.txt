@@ -1,2 +1,5 @@
 4/17/2019
 Today I got more experienced with the Curses library and was able to make it work better for my game, such as getting the cursor to move to a specific position based off which keys are pressed on the keyboard. The next step is to get the class for the player ironed out which includes some of the player attributes that will be expanded upon later, such as direction (still figuring out enums) and velocity. Hopefully next time I can get graphics for the world map working and to follow up I can began hit detection and world generation.
+
+4/21/2019
+Today I found out that the keyboard.getKey command pasues the program and this early catch caused me to be able not to properly refresh the screen as the program was waiting for a keyboard input. This meant that my character object wouldnt change position until after a keypress and i would have to press another key to refresh? It didn't work properly. Fortunately I did finish up the player class, next will be creating an enemy class, confirming movement code works, and creating shooting code for the player class
