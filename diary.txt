@@ -6,3 +6,9 @@ Today I found out that the keyboard.getKey command pasues the program and this e
 
 4/23/2019
 today I realized that curses was the wrong choice for the game I want to make, and I will now have to port everything I've done so far into IGIS. Fortunately, Points carry over just fine, so most of the code will still function properly, I just need to make some objects to paint onto IGIS and restructure my classes a little. This came about because I realized that in Curses you need the Cursor to write characters, and since I can't quickly devise a way to draw all the characters in such a way that I'd need a que, and a calculations method, and etc etc etc. It would be 10x easier to switch to IGIS which will handle all the things I dont want to do for me. I completed the Player class, and the Bullet class to an extent, but porting over to IGIS will delay the process somewhat.
+
+
+4/25/2019
+Everytime i work on this i deteriate a little bit more, I've scrapped my past idea, it's probably just gonna be an "RPG" where you send commands to move a player thru a maze, I've made a grid class/object, and that works adn allows me to make maps as big or small as I desire, and randomly generates them too which is cool. Now I just need to create a new player class, and create functions using the ReadLine() command that moves the player thru the maze, I also need to set up limits and collision detection. Also I'm losing my mind :)
+
+:( 
