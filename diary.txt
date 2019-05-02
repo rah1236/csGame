@@ -12,3 +12,9 @@ today I realized that curses was the wrong choice for the game I want to make, a
 Everytime i work on this i deteriate a little bit more, I've scrapped my past idea, it's probably just gonna be an "RPG" where you send commands to move a player thru a maze, I've made a grid class/object, and that works adn allows me to make maps as big or small as I desire, and randomly generates them too which is cool. Now I just need to create a new player class, and create functions using the ReadLine() command that moves the player thru the maze, I also need to set up limits and collision detection. Also I'm losing my mind :)
 
 :( 
+
+4/30/2019
+Ok so I finished up the player and Grid class and added  functions to both. Do they all work? Obviously not, but the meat of them is there, all I have to do is trim the bugs and get it to compile, do some further testing, experiment with dialouge and NPC characters (literally unicode characters) and probably make a class for them, as well ass implement some type of overall game controller that puts the game into muliple states? I have some leighway with how the screen buffers, so I have all the control I want over how it looks, even though it's fairly arachaeic. That's the plan for this week. Im also very tired and would like to nap.
+
+5/2/2019
+Today I finished the movement system along with the player class and the grid class. Movement bounds were broken so at the moment those don't work and need to be reimplemented. I'm also working on a universal NPC class for enemies and friendlies. Once I implement that I will be close to implementing the interaction system which I will probably have to do this weekend. But my main goals of having a graphical system with a grid that the player can navigate and NPC's can exist in is very close to coming to complete fruition, and then I can focus on the main boring story stuff.
